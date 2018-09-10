@@ -25,18 +25,20 @@ def rand_string(length, output):
     output.put(rand_str)
     #return (output)
 
-# Setup a list of processes that we want to run
-processes = [mp.Process(target=rand_string, args = (5, output)) for x in range (4)]
+if __name__== '__main__':
+    # Setup a list of processes that we want to run
+    processes = [mp.Process(target=rand_string, args = (5, output)) for x in range (4)]
 
-#Run processes
-for p in processes:
-    p.start()
+    #Run processes
+    i = 0
+    for p in processes:
+        p.start()
+        p.join()
+        print ('process start', i)
+        i += 1
     
-# Exit the completed processes
-for p in processes:
-    p.join()
 
-# Get process results from the output queue
-results = [output.get() for p in processes]
-
-print (results)
+    # Get process results from the output queue
+    results = [output.get() for p in processes]
+    #print ('results')
+    print (results)
