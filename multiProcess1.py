@@ -11,7 +11,7 @@ import multiprocessing as mp
 import random
 import string
 
-random.seed(123)
+#random.seed(123)
 
 #Define an output queue
 output = mp.Queue()
@@ -30,13 +30,11 @@ if __name__== '__main__':
     processes = [mp.Process(target=rand_string, args = (5, output)) for x in range (4)]
 
     #Run processes
-    i = 0
     for p in processes:
         p.start()
-        p.join()
-        print ('process start', i)
-        i += 1
-    
+ 
+    for p in processes:
+        p.join()    
 
     # Get process results from the output queue
     results = [output.get() for p in processes]

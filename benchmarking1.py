@@ -80,7 +80,7 @@ if __name__ == '__main__':
     # Generate random 2D-patterns
     mu_vec = np.array([0,0])
     cov_mat = np.array([[1,0],[0,1]])
-    n = 1000000
+    n = 100000
 
     x_2Dgauss = np.random.multivariate_normal(mu_vec, cov_mat, n)
 
